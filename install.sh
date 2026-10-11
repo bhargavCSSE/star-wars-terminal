@@ -266,6 +266,11 @@ theme_vscode() {
 terminal_notes() {
   note "Other terminals: set the font to \"JetBrainsMono Nerd Font Mono\" and use the Catppuccin Mocha colors."
   note "Ready-made files for Alacritty and WezTerm are in $SWT_HOME/terminals/"
+  if [ "$(swt_os)" = linux ] && ! have kitty && [ ! -d "$HOME/.config/kitty" ]; then
+    warn "The starfield background needs a terminal that can show images. GNOME's default terminals"
+    warn "(Ptyxis and GNOME Terminal) can't. Install kitty (e.g. sudo dnf install kitty or"
+    warn "sudo apt install kitty) and run this installer again to get it."
+  fi
 }
 
 # ------------------------------------------------------------------ main
