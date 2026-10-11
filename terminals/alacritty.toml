@@ -1,0 +1,35 @@
+# star-wars-terminal for Alacritty. Add to alacritty.toml:
+#   [general]
+#   import = ["~/.config/star-wars-terminal/terminals/alacritty.toml"]
+# Alacritty can't show background images, so you get the colors and font only.
+
+[font.normal]
+family = "JetBrainsMono Nerd Font Mono"
+
+[colors.primary]
+background = "#1E1E2E"
+foreground = "#CDD6F4"
+
+[colors.cursor]
+cursor = "#F5E0DC"
+text = "#1E1E2E"
+
+[colors.normal]
+black = "#45475A"
+red = "#F38BA8"
+green = "#A6E3A1"
+yellow = "#F9E2AF"
+blue = "#89B4FA"
+magenta = "#F5C2E7"
+cyan = "#94E2D5"
+white = "#BAC2DE"
+
+[colors.bright]
+black = "#585B70"
+red = "#F38BA8"
+green = "#A6E3A1"
+yellow = "#F9E2AF"
+blue = "#89B4FA"
+magenta = "#F5C2E7"
+cyan = "#94E2D5"
+white = "#A6ADC8"

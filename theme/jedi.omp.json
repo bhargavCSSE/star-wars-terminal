@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 4,
+  "final_space": true,
+  "console_title_template": "{{ .Folder }}",
+  "palette": {
+    "saber-blue": "#89B4FA",
+    "saber-red": "#F38BA8",
+    "saber-purple": "#CBA6F7",
+    "saber-green": "#A6E3A1",
+    "saber-yellow": "#F9E2AF",
+    "saber-white": "#EFF1F5",
+    "darksaber": "#0B0B12",
+    "void": "#1E1E2E",
+    "metal": "#585B70",
+    "metal-lit": "#7F849C",
+    "grip": "#313244",
+    "ridge": "#9399B2",
+    "clamp": "#9399B2",
+    "clamp-lit": "#BAC2DE",
+    "chrome": "#CDD6F4",
+    "core": "#11111B",
+    "holo": "#7F849C",
+    "python": "#F9E2AF",
+    "node": "#A6E3A1",
+    "rust": "#FAB387",
+    "go": "#89DCEB",
+    "java": "#FAB387",
+    "dotnet": "#CBA6F7"
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "plain",
+          "template": "{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }} {{ end }}",
+          "foreground": "p:holo"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "template": "<p:void,p:metal></><p:metal-lit,p:metal>▀</><p:ridge,p:grip>▏▏▏▏</><p:clamp-lit,p:clamp>▀</>{{ if gt .Code 0 }}<p:saber-red,p:clamp>•</>{{ else if .Root }}<p:darksaber,p:clamp>•</>{{ else if .Env.JEDI_SABER }}<p:saber-{{ .Env.JEDI_SABER }},p:clamp>•</>{{ else }}<p:saber-blue,p:clamp>•</>{{ end }}<p:clamp-lit,p:clamp>▀</><p:metal-lit,p:metal>▀</><p:chrome,p:metal>▕</>"
+        },
+        {
+          "type": "path",
+          "style": "diamond",
+          "trailing_diamond": "",
+          "options": { "style": "agnoster_short", "max_depth": 3, "home_icon": "~" },
+          "template": " <b>{{ .Path }}</b> ",
+          "foreground": "p:core",
+          "foreground_templates": ["{{ if and .Root (eq .Code 0) }}p:chrome{{ end }}"],
+          "background": "p:saber-blue",
+          "background_templates": [
+            "{{ if gt .Code 0 }}p:saber-red{{ end }}",
+            "{{ if .Root }}p:darksaber{{ end }}",
+            "{{ if .Env.JEDI_SABER }}p:saber-{{ .Env.JEDI_SABER }}{{ end }}"
+          ]
+        },
+        {
+          "type": "git",
+          "style": "diamond",
+          "trailing_diamond": "",
+          "options": {
+            "fetch_status": true,
+            "fetch_stash_count": true,
+            "branch_icon": "",
+            "branch_identical_icon": "",
+            "branch_gone_icon": "",
+            "branch_template": "{{ trunc 30 .Branch }}"
+          },
+          "template": "󰘬 {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} 󰀼 {{ .StashCount }}{{ end }} ",
+          "foreground": "p:core",
+          "foreground_templates": ["{{ if and .Root (eq .Code 0) }}p:chrome{{ end }}"],
+          "background": "p:saber-blue",
+          "background_templates": [
+            "{{ if gt .Code 0 }}p:saber-red{{ end }}",
+            "{{ if .Root }}p:darksaber{{ end }}",
+            "{{ if .Env.JEDI_SABER }}p:saber-{{ .Env.JEDI_SABER }}{{ end }}"
+          ]
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "options": {
+            "display_mode": "context",
+            "fetch_virtual_env": true,
+            "extensions": ["*.py", "*.ipynb", "pyproject.toml", "requirements.txt", "setup.py", "Pipfile", ".python-version", "environment.yml"]
+          },
+          "template": "  󰌠 {{ if .Venv }}<p:holo>{{ .Venv }}</> {{ end }}{{ .Major }}.{{ .Minor }}",
+          "foreground": "p:python"
+        },
+        {
+          "type": "node",
+          "style": "plain",
+          "options": { "display_mode": "files" },
+          "template": "  󰎙 {{ .Major }}.{{ .Minor }}",
+          "foreground": "p:node"
+        },
+        {
+          "type": "rust",
+          "style": "plain",
+          "options": { "display_mode": "files" },
+          "template": "  󱘗 {{ .Major }}.{{ .Minor }}",
+          "foreground": "p:rust"
+        },
+        {
+          "type": "go",
+          "style": "plain",
+          "options": { "display_mode": "files" },
+          "template": "   {{ .Major }}.{{ .Minor }}",
+          "foreground": "p:go"
+        },
+        {
+          "type": "java",
+          "style": "plain",
+          "options": { "display_mode": "files" },
+          "template": "  󰅶 {{ .Major }}",
+          "foreground": "p:java"
+        },
+        {
+          "type": "dotnet",
+          "style": "plain",
+          "options": { "display_mode": "files" },
+          "template": "  .NET {{ .Major }}.{{ .Minor }}",
+          "foreground": "p:dotnet"
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "options": { "threshold": 2000, "style": "austin" },
+          "template": "  󰔛 {{ .FormattedMs }}",
+          "foreground": "p:holo"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "template": " ❯",
+          "foreground": "p:saber-blue",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}p:saber-red{{ end }}",
+            "{{ if .Root }}p:chrome{{ end }}",
+            "{{ if .Env.JEDI_SABER }}p:saber-{{ .Env.JEDI_SABER }}{{ end }}"
+          ]
+        }
+      ]
+    }
+  ],
+  "transient_prompt": {
+    "template": "{{ if gt .Code 0 }}{{ else }}{{ end }} <p:holo>{{ .Folder }}</> ❯ ",
+    "foreground": "p:saber-blue",
+    "foreground_templates": [
+      "{{ if gt .Code 0 }}p:saber-red{{ end }}",
+      "{{ if .Env.JEDI_SABER }}p:saber-{{ .Env.JEDI_SABER }}{{ end }}"
+    ]
+  },
+  "secondary_prompt": {
+    "template": "❯❯ ",
+    "foreground": "p:saber-blue",
+    "foreground_templates": ["{{ if .Env.JEDI_SABER }}p:saber-{{ .Env.JEDI_SABER }}{{ end }}"]
+  }
+}
