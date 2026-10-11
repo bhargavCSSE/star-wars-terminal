@@ -1,8 +1,8 @@
 <#
 star-wars-terminal installer for Windows.
 
-  Install:    irm https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/main/install.ps1 | iex
-  Uninstall:  & ([scriptblock]::Create((irm https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/main/install.ps1))) -Uninstall
+  Install:    irm https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/master/install.ps1 | iex
+  Uninstall:  & ([scriptblock]::Create((irm https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/master/install.ps1))) -Uninstall
   From a clone:  .\install.ps1  [-Uninstall] [-SkipDependencies] [-WithClink]
 
 What it does:
@@ -16,7 +16,7 @@ Every settings file it edits is backed up first. Running it again is safe.
 param([switch] $Uninstall, [switch] $SkipDependencies, [switch] $WithClink)
 
 $SwtRepo = if ($env:SWT_REPO) { $env:SWT_REPO } else { 'bhargavCSSE/star-wars-terminal' }
-$SwtBranch = if ($env:SWT_BRANCH) { $env:SWT_BRANCH } else { 'main' }
+$SwtBranch = if ($env:SWT_BRANCH) { $env:SWT_BRANCH } else { 'master' }
 $SwtHome = if ($env:SWT_HOME) { $env:SWT_HOME } else { Join-Path $HOME '.config\star-wars-terminal' }
 $SwtBegin = '# >>> star-wars-terminal >>>'
 $SwtEnd = '# <<< star-wars-terminal <<<'

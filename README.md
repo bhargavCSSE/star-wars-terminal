@@ -11,13 +11,13 @@ Your prompt becomes a lightsaber: a metal hilt with a status light, and a glowin
 **Windows** (PowerShell):
 
 ```powershell
-irm https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/master/install.ps1 | iex
 ```
 
 **macOS and Linux**:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/master/install.sh | bash
 ```
 
 Then open a new terminal window.
@@ -86,13 +86,13 @@ On Windows, if PowerShell's execution policy blocks profile scripts, the install
 **Windows:**
 
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/main/install.ps1))) -Uninstall
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/master/install.ps1))) -Uninstall
 ```
 
 **macOS and Linux:**
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/main/install.sh | bash -s -- --uninstall
+curl -fsSL https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/master/install.sh | bash -s -- --uninstall
 ```
 
 Uninstalling removes the shell blocks, the theme folder, the iTerm2 profile, the kitty theme and the Windows Terminal background. It keeps Oh My Posh, the font and your terminal colors. The backups of every edited file are still there if you want your old settings back.

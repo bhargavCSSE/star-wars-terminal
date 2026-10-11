@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # star-wars-terminal installer for macOS and Linux.
 #
-#   Install:    curl -fsSL https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/main/install.sh | bash
-#   Uninstall:  curl -fsSL https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/main/install.sh | bash -s -- --uninstall
+#   Install:    curl -fsSL https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/master/install.sh | bash
+#   Uninstall:  curl -fsSL https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/master/install.sh | bash -s -- --uninstall
 #   From a clone:  ./install.sh [--uninstall] [--skip-deps]
 #
 # What it does:
@@ -15,7 +15,7 @@
 set -u
 
 SWT_REPO="${SWT_REPO:-bhargavCSSE/star-wars-terminal}"
-SWT_BRANCH="${SWT_BRANCH:-main}"
+SWT_BRANCH="${SWT_BRANCH:-master}"
 SWT_HOME="${SWT_HOME:-$HOME/.config/star-wars-terminal}"
 SWT_BEGIN="# >>> star-wars-terminal >>>"
 SWT_END="# <<< star-wars-terminal <<<"
