@@ -80,7 +80,8 @@ On Windows, if PowerShell's execution policy blocks profile scripts, the install
 | WezTerm | paste [`terminals/wezterm.lua`](terminals/wezterm.lua) into your config | ✅ |
 | Alacritty | import [`terminals/alacritty.toml`](terminals/alacritty.toml) | Alacritty can't show background images |
 | Ptyxis and GNOME Terminal (the defaults on Fedora, Ubuntu and other GNOME desktops) | set the font to **JetBrainsMono Nerd Font Mono** and pick Catppuccin Mocha colors | they can't show background images; use kitty for the starfield |
-| Others (Terminal.app, Konsole, …) | set the font to **JetBrainsMono Nerd Font Mono** and pick Catppuccin Mocha colors | depends on the terminal |
+| Terminal.app (macOS) | set the font to **JetBrainsMono Nerd Font Mono** and pick Catppuccin Mocha colors | ✅ set it by hand: Settings → Profiles → Window → Background → Image, then choose `~/.config/star-wars-terminal/starfield.png` |
+| Others (Konsole, …) | set the font to **JetBrainsMono Nerd Font Mono** and pick Catppuccin Mocha colors | depends on the terminal |
 
 ## Uninstall
 
@@ -127,7 +128,9 @@ After editing files in your clone, run the installer again to copy them over.
 
 - **Icons show as boxes or `?`.** Your terminal isn't using the Nerd Font. Set it to **JetBrainsMono Nerd Font Mono**. The plain, non-Mono version also works, but the Propo version is meant for apps other than terminals.
 - **A small dark wedge at the left end of the prompt.** The hilt's swallowtail notch is drawn in Catppuccin Mocha's background color (`#1E1E2E`). Use that color scheme, or change `void` in `theme/jedi.omp.json` to your background color.
-- **No starfield background on Linux.** Your terminal probably can't show images. Fedora's and Ubuntu's default terminals (Ptyxis and GNOME Terminal) can't. Install kitty (`sudo dnf install kitty` or `sudo apt install kitty`), run the installer again, and open kitty.
+- **No starfield background.**
+  - **macOS Terminal.app:** the installer doesn't set its background. Open Terminal → Settings → Profiles → Window, and under Background → Image choose `~/.config/star-wars-terminal/starfield.png`. Or use iTerm2, which the installer sets up for you.
+  - **Linux:** your terminal probably can't show images. Fedora's and Ubuntu's default terminals (Ptyxis and GNOME Terminal) can't. Install kitty (`sudo dnf install kitty` or `sudo apt install kitty`), run the installer again, and open kitty.
 - **The prompt stays red after pressing Enter on an empty line.** That's expected: no command ran, so the last result was still a failure. It clears after the next successful command.
 
 ## Credits

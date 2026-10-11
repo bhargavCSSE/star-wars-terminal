@@ -271,6 +271,10 @@ terminal_notes() {
     warn "(Ptyxis and GNOME Terminal) can't. Install kitty (e.g. sudo dnf install kitty or"
     warn "sudo apt install kitty) and run this installer again to get it."
   fi
+  if [ "$(swt_os)" = macos ] && [ ! -d "/Applications/iTerm.app" ] && [ ! -d "$HOME/Library/Application Support/iTerm2" ]; then
+    warn "To see the starfield in Terminal.app, open Terminal > Settings > Profiles > Window,"
+    warn "and under Background > Image choose $SWT_HOME/starfield.png"
+  fi
 }
 
 # ------------------------------------------------------------------ main
