@@ -4,9 +4,7 @@ A Jedi-themed terminal for Windows, macOS and Linux, installed with one command.
 
 Your prompt becomes a lightsaber: a metal hilt with a status light, and a glowing blade that holds your path and git status. Language versions sit beside it, and the colors come from [Catppuccin Mocha](https://catppuccin.com). Behind it all is a starfield with an X-wing heading into the galaxy.
 
-![Starfield background with an X-wing](assets/starfield.png)
-
-<!-- Add a screenshot of the prompt here, e.g. docs/preview.png -->
+![The lightsaber prompt on the starfield background: a Jedi quote, collapsed earlier prompts, and the full blade showing the path, git status, Python version and run time](assets/preview.png)
 
 ## Install
 
@@ -35,6 +33,8 @@ Then open a new terminal window.
 - **Your choice of saber color.** See below.
 
 ## Choose your lightsaber
+
+![The prompt in each saber color, plus the red blade after a failed command](assets/sabers.png)
 
 ```sh
 saber green     # Luke, Yoda, Qui-Gon
