@@ -75,7 +75,7 @@ On Windows, if PowerShell's execution policy blocks profile scripts, the install
 |---|---|---|
 | Windows Terminal | ✅ automatic | ✅ |
 | VS Code (all platforms) | ✅ automatic | VS Code can't show background images |
-| iTerm2 | ✅ adds a **Star Wars** profile (set it as default in Settings → Profiles) | ✅ |
+| iTerm2 | ✅ adds a **Star Wars** profile and makes it the default (quit and reopen iTerm2 if it was open) | ✅ |
 | kitty | ✅ automatic | ✅ |
 | WezTerm | paste [`terminals/wezterm.lua`](terminals/wezterm.lua) into your config | ✅ |
 | Alacritty | import [`terminals/alacritty.toml`](terminals/alacritty.toml) | Alacritty can't show background images |
@@ -97,7 +97,7 @@ On Windows, if PowerShell's execution policy blocks profile scripts, the install
 curl -fsSL https://raw.githubusercontent.com/bhargavCSSE/star-wars-terminal/master/install.sh | bash -s -- --uninstall
 ```
 
-Uninstalling removes the shell blocks, the theme folder, the iTerm2 profile, the kitty theme and the Windows Terminal background. It keeps Oh My Posh, the font and your terminal colors. The backups of every edited file are still there if you want your old settings back.
+Uninstalling removes the shell blocks, the theme folder, the iTerm2 profile (and gives the default back to your previous profile), the kitty theme and the Windows Terminal background. It keeps Oh My Posh, the font and your terminal colors. The backups of every edited file are still there if you want your old settings back.
 
 ## Install from a clone
 

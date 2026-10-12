@@ -19,6 +19,7 @@ SWT_BRANCH="${SWT_BRANCH:-master}"
 SWT_HOME="${SWT_HOME:-$HOME/.config/star-wars-terminal}"
 SWT_BEGIN="# >>> star-wars-terminal >>>"
 SWT_END="# <<< star-wars-terminal <<<"
+SWT_ITERM_GUID="star-wars-terminal-0001"  # matches terminals/iterm2-profile.json
 SWT_STAMP="$(date +%Y%m%d-%H%M%S)"
 SWT_TMP=""
 SWT_SRC=""
@@ -180,7 +181,19 @@ theme_iterm2() {
   local dir="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
   mkdir -p "$dir"
   sed "s|{{BACKGROUND}}|$SWT_HOME/starfield.png|" "$SWT_HOME/terminals/iterm2-profile.json" > "$dir/star-wars-terminal.json"
-  ok "Added a \"Star Wars\" profile to iTerm2. Make it the default in iTerm2 > Settings > Profiles (Other Actions > Set as Default)."
+
+  # Make it the default profile. iTerm2 restores a dynamic profile as the default at launch,
+  # and only writes this setting when you change the default yourself.
+  local current; current="$(defaults read com.googlecode.iterm2 "Default Bookmark Guid" 2>/dev/null)"
+  if [ "$current" != "$SWT_ITERM_GUID" ]; then
+    [ -n "$current" ] && printf '%s
+' "$current" > "$SWT_HOME/iterm2-previous-default"
+    defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "$SWT_ITERM_GUID"
+  fi
+  ok "Added a \"Star Wars\" profile to iTerm2 and made it the default."
+  if pgrep -x iTerm2 >/dev/null 2>&1; then
+    warn "iTerm2 is open: quit it (Cmd+Q) and reopen it to start using the Star Wars profile."
+  fi
 }
 
 theme_kitty() {
@@ -325,6 +338,15 @@ uninstall_swt() {
   fi
   [ -f "$HOME/.config/fish/conf.d/star-wars-terminal.fish" ] && rm -f "$HOME/.config/fish/conf.d/star-wars-terminal.fish" && ok "Unhooked fish"
   remove_block "$HOME/.config/kitty/kitty.conf" && rm -f "$HOME/.config/kitty/star-wars-terminal.conf" && ok "Removed the kitty theme"
+  if [ "$(swt_os)" = macos ] && [ "$(defaults read com.googlecode.iterm2 "Default Bookmark Guid" 2>/dev/null)" = "$SWT_ITERM_GUID" ]; then
+    # Hand the default back to the profile that had it before the install
+    if [ -s "$SWT_HOME/iterm2-previous-default" ]; then
+      defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "$(head -n 1 "$SWT_HOME/iterm2-previous-default")"
+    else
+      defaults delete com.googlecode.iterm2 "Default Bookmark Guid" 2>/dev/null
+    fi
+    ok "Restored your previous default iTerm2 profile"
+  fi
   [ -f "$HOME/Library/Application Support/iTerm2/DynamicProfiles/star-wars-terminal.json" ] &&
     rm -f "$HOME/Library/Application Support/iTerm2/DynamicProfiles/star-wars-terminal.json" && ok "Removed the iTerm2 profile"
   [ -d "$SWT_HOME" ] && rm -rf "$SWT_HOME" && ok "Removed $SWT_HOME"
